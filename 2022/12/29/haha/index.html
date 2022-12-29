@@ -474,7 +474,7 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-存储" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-haha" class="article article-type-post" itemscope itemprop="blogPost">
     
     <div class="article-meta">
         
@@ -484,7 +484,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2022-12-29 18:37:43'>2022-12-29 18:03</time>
+            Created At : <time class="date" title='Updated At: 2022-12-29 18:37:43'>2022-12-29 18:37</time>
         
     </div>
     <div class="article-meta">
@@ -506,7 +506,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#sm"><span class="toc-text">sm</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -522,18 +522,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#格式化文件系统<br>lsblk |grep -w 14.6T |awk ‘{print “mkfs.xfs -f /dev/“$1}’<br>#创建目录<br>mkdir -p /mnt/disk{1..36}</p>
-<p>lsblk -l |grep ‘14.6T’ |awk ‘{printf $1”|”}’</p>
-<p>lsblk |grep -w 14.6T |awk ‘{print   $1}’<br>lsblk |grep -w 14.6T |awk ‘{print   $1}’ | wc -l</p>
-<p>#安装redis 和nfs<br>apt install redis -y<br>apt install nfs-kernel-server -y</p>
-<p>#安装mergerfs<br>sudo add-apt-repository ppa:ubuntu-toolchain-r/test<br>apt -y install libgcc-s1<br>dpkg -i mergerfs_2.33.5-179-gaef99ad~ubuntu-bionic_amd64_1.deb<br>systemctl restart nfs-server.service<br>systemctl status nfs-server.service </p>
-<p>echo “/export *(rw,async,no_root_squash,no_subtree_check,fsid=-1)” &gt;  /etc/exports<br>#开始跑<br>df -h | grep 15T |awk ‘{printf $NF”:”}’ |awk ‘{print “mergerfs -o noforget,allow_other,use_ino,nonempty,category.create=redis,minfreespace=65G,combinedirs=/cache/:/sealed/,redis=tcp://127.0.0.1,threads=40,security_capability=false,cache.attr=10000,cache.entry=1000,cache.negative_entry=1000,cache.readdir=true   “$1 “  /export”}’|bash</p>
-<p>#先河<br>df -h | grep 15T |awk ‘{printf $NF”:”}’ |awk ‘{print “mergerfs -o noforget,allow_other,use_ino,nonempty,category.create=redis,minfreespace=65G,combinedirs=/.lotusworker/cache/:/.lotusworker/sealed/,redis=tcp://127.0.0.1,threads=40,security_capability=false,cache.attr=10000,cache.entry=1000,cache.negative_entry=1000,cache.readdir=true   “$1 “  /export”}’|bash</p>
-<p>#官方<br> df -h | grep 15T |awk ‘{printf $NF”:”}’ |awk ‘{print “mergerfs -o noforget,allow_other,use_ino,nonempty,minfreespace=65G,category.create=rand  “$1 “  /export”}’|bash</p>
-<p>systemctl restart nfs-server.service<br>systemctl status nfs-server.service </p>
-<p>#建目录<br>mkdir /mnt/data{1..36}<br>for i in <code>lsblk |grep 14.6 |awk &#39;&#123;print &quot;ls -l  /dev/disk/by-uuid | grep &quot;$1&#125;&#39; | bash  | awk &#39;&#123;print $9&#125;&#39;  | sort | uniq</code> ; do a=$(($a+1)); echo “/dev/disk/by-uuid/$i /mnt/data$a xfs defaults 0 0”; done</p>
-<p>#存储初始化<br>source /opt/raid0/lotusminer-window/profile<br>lotus-miner storage attach –store –init /mnt/10.0.200.4/export<br>source /opt/raid0/lotusminer-winning/profile<br>lotus-miner storage attach –store /mnt/10.0.200.4/export<br>source /opt/raid0/lotusminer-sealing/profile<br>lotus-miner storage attach –store /mnt/10.0.200.4/export</p>
-
+        <h3 id="sm"><a href="#sm" class="headerlink" title="sm"></a>sm</h3>
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
     </div>
