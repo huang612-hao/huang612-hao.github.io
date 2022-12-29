@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>aleo | 阿Q</title>
+  <title>�ű� | 阿Q</title>
   <meta name="keywords" content="">
-  <meta name="description" content="aleo | 阿Q">
+  <meta name="description" content="�ű� | 阿Q">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="###########多签钱包提币，转币#提币#miner上执行，取到提币返回值lotus chain encode params –encoding&#x3D;hex  &lt;miner地址&gt;  16   {&quot;amountRequested&quot;:&quot;500000000000000000000&quot;}#审批地址上执行lotus msig propose –from&#x3D;&amp;">
 <meta property="og:type" content="article">
@@ -483,9 +483,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-aleo" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-脚本" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">aleo</h1>
+        <h1 class="article-title">�ű�</h1>
     
     <div class="article-meta">
         
@@ -495,7 +495,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2022-12-29 18:59:22'>2022-12-29 18:03</time>
+            Created At : <time class="date" title='Updated At: 2022-12-29 18:59:22'>2022-12-29 18:59</time>
         
     </div>
     <div class="article-meta">
@@ -517,7 +517,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#aleo"><span class="toc-text">aleo</span></a></li></ol>
+        
     
 <style>
     .left-col .switch-btn,
@@ -533,9 +533,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="aleo"><a href="#aleo" class="headerlink" title="aleo"></a>aleo</h2><p>root@f01943776-p1-10-0-101-47:/opt/aleo# ./damominer –new-account </p>
-<p>Private key: APrivateKey1zkp6ttaHRWQNX6bjDFkp33VUmkQYWX2wiX1C3SjpBJaP7zb<br>   View key: AViewKey1i9QeBGo5dgqeGaoJ3w9FvCgqYgKFGNL1RtWPyCbkqThU<br>    Address: aleo1qcypmym8h5q9gmhapv8daa6kddzh3dvwn3chpdv4tmy8marejgqsqvm0tc</p>
-<p>root@f01943776-p1-10-0-101-47:/opt/aleo# </p>
+        <p>#!/bin/bash<br>for sealed in <code>ls /export/sealed/</code><br>   do<br>       cache=<code>echo $sealed|sed &#39;s/sealed/cache/&#39;</code><br>       {<br>              rsync -au /export/sealed/$sealed /mnt/10.3.14.17/export/sealed/<br>              rsync -au /export/cache/$cache  /mnt/10.3.14.17/export/cache/<br>         } &amp;<br>         while [ <code>pgrep -c rsync</code> -gt 5 ]<br>         do<br>           sleep 10<br>         done<br>done</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
