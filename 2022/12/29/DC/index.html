@@ -1,201 +1,668 @@
-<!DOCTYPE html><html lang="zh-Hans" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>DC | 阿Q</title><meta name="author" content="阿Q"><meta name="copyright" content="阿Q"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="DCDC封装1，lotus，lotusminer，lotusworker程序需要1.17.0以上 版本低于1.17.0需要部署boost v1.2.0的，默认是v1.4.0 部署boost接单程序，在miner机器上部署1，部署go程序123wget -c https:&#x2F;&#x2F;golang.org&#x2F;dl&#x2F;go1.18.1.linux-amd64.tar.gz -O - | sudo tar -xz -">
+
+
+<!DOCTYPE html>
+<html lang="zh-Hans" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="阿Q">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="DCDC封装1，lotus，lotusminer，lotusworker程序需要1.17.0以上 版本低于1.17.0需要部署boost v1.2.0的，默认是v1.4.0 部署boost接单程序，在miner机器上部署1，部署go程序123wget -c https:&#x2F;&#x2F;golang.org&#x2F;dl&#x2F;go1.18.1.linux-amd64.tar.gz -O - | sudo tar -xz -">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DC">
 <meta property="og:url" content="http://example.com/2022/12/29/DC/index.html">
 <meta property="og:site_name" content="阿Q">
 <meta property="og:description" content="DCDC封装1，lotus，lotusminer，lotusworker程序需要1.17.0以上 版本低于1.17.0需要部署boost v1.2.0的，默认是v1.4.0 部署boost接单程序，在miner机器上部署1，部署go程序123wget -c https:&#x2F;&#x2F;golang.org&#x2F;dl&#x2F;go1.18.1.linux-amd64.tar.gz -O - | sudo tar -xz -">
 <meta property="og:locale">
-<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
 <meta property="article:published_time" content="2022-12-29T03:33:44.005Z">
 <meta property="article:modified_time" content="2022-12-26T07:11:52.000Z">
 <meta property="article:author" content="阿Q">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2022/12/29/DC/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
-  root: '/',
-  algolia: undefined,
-  localSearch: undefined,
-  translate: undefined,
-  noticeOutdate: undefined,
-  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
-  copy: {
-    success: 'Copy successfully',
-    error: 'Copy error',
-    noSupport: 'The browser does not support'
-  },
-  relativeDate: {
-    homepage: false,
-    post: false
-  },
-  runtime: '',
-  date_suffix: {
-    just: 'Just',
-    min: 'minutes ago',
-    hour: 'hours ago',
-    day: 'days ago',
-    month: 'months ago'
-  },
-  copyright: undefined,
-  lightbox: 'fancybox',
-  Snackbar: undefined,
-  source: {
-    justifiedGallery: {
-      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
-      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
-    }
-  },
-  isPhotoFigcaption: false,
-  islazyload: false,
-  isAnchor: false
-}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: 'DC',
-  isPost: true,
-  isHome: false,
-  isHighlightShrink: false,
-  isToc: true,
-  postUpdate: '2022-12-26 15:11:52'
-}</script><noscript><style type="text/css">
-  #nav {
-    opacity: 1
-  }
-  .justified-gallery img {
-    opacity: 1
-  }
-
-  #recent-posts time,
-  #post-meta time {
-    display: inline !important
-  }
-</style></noscript><script>(win=>{
-    win.saveToLocal = {
-      set: function setWithExpiry(key, value, ttl) {
-        if (ttl === 0) return
-        const now = new Date()
-        const expiryDay = ttl * 86400000
-        const item = {
-          value: value,
-          expiry: now.getTime() + expiryDay,
-        }
-        localStorage.setItem(key, JSON.stringify(item))
-      },
-
-      get: function getWithExpiry(key) {
-        const itemStr = localStorage.getItem(key)
-
-        if (!itemStr) {
-          return undefined
-        }
-        const item = JSON.parse(itemStr)
-        const now = new Date()
-
-        if (now.getTime() > item.expiry) {
-          localStorage.removeItem(key)
-          return undefined
-        }
-        return item.value
-      }
-    }
+<meta name="twitter:card" content="summary_large_image">
   
-    win.getScript = url => new Promise((resolve, reject) => {
-      const script = document.createElement('script')
-      script.src = url
-      script.async = true
-      script.onerror = reject
-      script.onload = script.onreadystatechange = function() {
-        const loadState = this.readyState
-        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-        script.onload = script.onreadystatechange = null
-        resolve()
-      }
-      document.head.appendChild(script)
-    })
   
-      win.activateDarkMode = function () {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      win.activateLightMode = function () {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-        }
-      }
-      const t = saveToLocal.get('theme')
+  
+  <title>DC - 阿Q</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="阿Q" type="application/atom+xml">
+</head>
+
+
+<body>
+  
+
+  <header>
     
-          if (t === 'dark') activateDarkMode()
-          else if (t === 'light') activateLightMode()
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>阿Q</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="DC"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
     
-    const detectApple = () => {
-      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
-        document.documentElement.classList.add('apple')
-      }
-    }
-    detectApple()
-    })(window)</script><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="阿Q" type="application/atom+xml">
-</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">阿Q</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">DC</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-12-29T03:33:44.005Z" title="Created 2022-12-29 11:33:44">2022-12-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-12-26T07:11:52.000Z" title="Updated 2022-12-26 15:11:52">2022-12-26</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="DC"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="DC"><a href="#DC" class="headerlink" title="DC"></a>DC</h1><h2 id="DC封装"><a href="#DC封装" class="headerlink" title="DC封装"></a>DC封装</h2><p>1，lotus，lotusminer，lotusworker程序需要1.17.0以上</p>
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-12-29 11:33" pubdate>
+          December 29, 2022 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.9k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          58 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">DC</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="DC"><a href="#DC" class="headerlink" title="DC"></a>DC</h1><h2 id="DC封装"><a href="#DC封装" class="headerlink" title="DC封装"></a>DC封装</h2><p>1，lotus，lotusminer，lotusworker程序需要1.17.0以上</p>
 <p>版本低于1.17.0需要部署boost v1.2.0的，默认是v1.4.0</p>
-<h4 id="部署boost接单程序，在miner机器上部署"><a href="#部署boost接单程序，在miner机器上部署" class="headerlink" title="部署boost接单程序，在miner机器上部署"></a>部署boost接单程序，在miner机器上部署</h4><h6 id="1，部署go程序"><a href="#1，部署go程序" class="headerlink" title="1，部署go程序"></a>1，部署go程序</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget -c https://golang.org/dl/go1.18.1.linux-amd64.tar.gz -O - | sudo tar -xz -C /usr/local</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;export PATH=<span class="variable">$PATH</span>:/usr/local/go/bin&quot;</span> &gt;&gt; ~/.bashrc &amp;&amp; <span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+<h4 id="部署boost接单程序，在miner机器上部署"><a href="#部署boost接单程序，在miner机器上部署" class="headerlink" title="部署boost接单程序，在miner机器上部署"></a>部署boost接单程序，在miner机器上部署</h4><h6 id="1，部署go程序"><a href="#1，部署go程序" class="headerlink" title="1，部署go程序"></a>1，部署go程序</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">wget -c https://golang.org/dl/go1.18.1.linux-amd64.tar.gz -O - | sudo tar -xz -C /usr/local<br><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;export PATH=<span class="hljs-variable">$PATH</span>:/usr/local/go/bin&quot;</span> &gt;&gt; ~/.bashrc &amp;&amp; <span class="hljs-built_in">source</span> ~/.bashrc<br></code></pre></td></tr></table></figure>
 
-<h6 id="2，部署rsut程序"><a href="#2，部署rsut程序" class="headerlink" title="2，部署rsut程序"></a>2，部署rsut程序</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl --proto <span class="string">&#x27;=https&#x27;</span> --tlsv1.2 -sSf https://sh.rustup.rs | sh   </span><br><span class="line">屏幕输出    填1</span><br><span class="line"><span class="built_in">source</span> <span class="string">&quot;<span class="variable">$HOME</span>/.cargo/env&quot;</span></span><br></pre></td></tr></table></figure>
+<h6 id="2，部署rsut程序"><a href="#2，部署rsut程序" class="headerlink" title="2，部署rsut程序"></a>2，部署rsut程序</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">curl --proto <span class="hljs-string">&#x27;=https&#x27;</span> --tlsv1.2 -sSf https://sh.rustup.rs | sh   <br>屏幕输出    填1<br><span class="hljs-built_in">source</span> <span class="hljs-string">&quot;<span class="hljs-variable">$HOME</span>/.cargo/env&quot;</span><br></code></pre></td></tr></table></figure>
 
-<h6 id="3，安装依赖"><a href="#3，安装依赖" class="headerlink" title="3，安装依赖"></a>3，安装依赖</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -</span><br><span class="line">sudo apt-get install -y nodejs</span><br><span class="line">sudo apt install mesa-opencl-icd ocl-icd-opencl-dev gcc git bzr jq pkg-config curl clang build-essential hwloc libhwloc-dev wget -y</span><br><span class="line"><span class="comment">#git拉代码失败的话，需要删除/opt/raid/boost/boost后多安装几次依赖</span></span><br></pre></td></tr></table></figure>
+<h6 id="3，安装依赖"><a href="#3，安装依赖" class="headerlink" title="3，安装依赖"></a>3，安装依赖</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -<br>sudo apt-get install -y nodejs<br>sudo apt install mesa-opencl-icd ocl-icd-opencl-dev gcc git bzr jq pkg-config curl clang build-essential hwloc libhwloc-dev wget -y<br><span class="hljs-comment">#git拉代码失败的话，需要删除/opt/raid/boost/boost后多安装几次依赖</span><br></code></pre></td></tr></table></figure>
 
-<h6 id="4，刷环境变量"><a href="#4，刷环境变量" class="headerlink" title="4，刷环境变量"></a>4，刷环境变量</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> RUSTFLAGS=<span class="string">&quot;-C target-cpu=native -g&quot;</span></span><br><span class="line"><span class="built_in">export</span> FFI_BUILD_FROM_SOURCE=1</span><br></pre></td></tr></table></figure>
+<h6 id="4，刷环境变量"><a href="#4，刷环境变量" class="headerlink" title="4，刷环境变量"></a>4，刷环境变量</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> RUSTFLAGS=<span class="hljs-string">&quot;-C target-cpu=native -g&quot;</span><br><span class="hljs-built_in">export</span> FFI_BUILD_FROM_SOURCE=1<br></code></pre></td></tr></table></figure>
 
-<h6 id="5，拉代码"><a href="#5，拉代码" class="headerlink" title="5，拉代码"></a>5，拉代码</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> /opt/raid0/boost</span><br><span class="line"><span class="built_in">cd</span> /opt/raid0/boost</span><br><span class="line"></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/filecoin-project/boost</span><br><span class="line"><span class="built_in">cd</span> boost</span><br><span class="line">make build</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+<h6 id="5，拉代码"><a href="#5，拉代码" class="headerlink" title="5，拉代码"></a>5，拉代码</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> /opt/raid0/boost<br><span class="hljs-built_in">cd</span> /opt/raid0/boost<br><br>git <span class="hljs-built_in">clone</span> https://github.com/filecoin-project/boost<br><span class="hljs-built_in">cd</span> boost<br>make build<br>sudo make install<br></code></pre></td></tr></table></figure>
 
-<h6 id="6-获取4个环境变量"><a href="#6-获取4个环境变量" class="headerlink" title="6,获取4个环境变量"></a>6,获取4个环境变量</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> $(lotus auth api-info --perm=admin)</span><br><span class="line"><span class="built_in">export</span> $(lotus-miner auth api-info --perm=admin)</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> APISEALER=`lotus-miner auth api-info --perm=admin`</span><br><span class="line"><span class="built_in">export</span> APISECTORINDEX=`lotus-miner auth api-info --perm=admin`</span><br><span class="line"></span><br><span class="line">把这4个变量写入/opt/raid0/boost/profile</span><br></pre></td></tr></table></figure>
+<h6 id="6-获取4个环境变量"><a href="#6-获取4个环境变量" class="headerlink" title="6,获取4个环境变量"></a>6,获取4个环境变量</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> $(lotus auth api-info --perm=admin)<br><span class="hljs-built_in">export</span> $(lotus-miner auth api-info --perm=admin)<br><br><span class="hljs-built_in">export</span> APISEALER=`lotus-miner auth api-info --perm=admin`<br><span class="hljs-built_in">export</span> APISECTORINDEX=`lotus-miner auth api-info --perm=admin`<br><br>把这4个变量写入/opt/raid0/boost/profile<br></code></pre></td></tr></table></figure>
 
-<h6 id="7，初始化boostd"><a href="#7，初始化boostd" class="headerlink" title="7，初始化boostd"></a>7，初始化boostd</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span>  /opt/raid0/boost/profile</span><br><span class="line">boostd --vv init \</span><br><span class="line">       --api-sealer=<span class="variable">$APISEALER</span> \</span><br><span class="line">       --api-sector-index=<span class="variable">$APISECTORINDEX</span> \</span><br><span class="line">       --wallet-publish-storage-deals=<span class="variable">$PUBLISH_STORAGE_DEALS_WALLET</span> \</span><br><span class="line">       --wallet-deal-collateral=(写入worker钱包地址) \</span><br><span class="line">       --max-staging-deals-bytes=50000000000</span><br></pre></td></tr></table></figure>
+<h6 id="7，初始化boostd"><a href="#7，初始化boostd" class="headerlink" title="7，初始化boostd"></a>7，初始化boostd</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">source</span>  /opt/raid0/boost/profile<br>boostd --vv init \<br>       --api-sealer=<span class="hljs-variable">$APISEALER</span> \<br>       --api-sector-index=<span class="hljs-variable">$APISECTORINDEX</span> \<br>       --wallet-publish-storage-deals=<span class="hljs-variable">$PUBLISH_STORAGE_DEALS_WALLET</span> \<br>       --wallet-deal-collateral=(写入worker钱包地址) \<br>       --max-staging-deals-bytes=50000000000<br></code></pre></td></tr></table></figure>
 
-<h6 id="8，启动脚本"><a href="#8，启动脚本" class="headerlink" title="8，启动脚本"></a>8，启动脚本</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建boost启动脚本</span></span><br><span class="line">vim /opt/raid0/boost/start_boost.sh</span><br><span class="line"></span><br><span class="line"><span class="comment">#!/bin/bash</span></span><br><span class="line"><span class="built_in">source</span>  /opt/raid0/boost/profile</span><br><span class="line">logbak=/opt/raid0/boost/logbak</span><br><span class="line">time=`<span class="built_in">date</span> +%Y%m%d%H%M%S`</span><br><span class="line">[ -f /opt/raid0/boost/logs ] &amp;&amp; <span class="built_in">mkdir</span> -p <span class="variable">$logbak</span> &amp;&amp; <span class="built_in">mv</span> /opt/raid0/boost/logs <span class="variable">$logbak</span>/miner_<span class="variable">$&#123;time&#125;</span>.<span class="built_in">log</span></span><br><span class="line"><span class="built_in">nohup</span> boostd --vv run  &gt; /opt/raid0/boost/logs 2&gt;&amp;1 &amp;</span><br><span class="line"></span><br><span class="line"><span class="comment">#启动boost脚本</span></span><br><span class="line">bash /opt/raid0/boost/start_boost.sh</span><br></pre></td></tr></table></figure>
+<h6 id="8，启动脚本"><a href="#8，启动脚本" class="headerlink" title="8，启动脚本"></a>8，启动脚本</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#创建boost启动脚本</span><br>vim /opt/raid0/boost/start_boost.sh<br><br><span class="hljs-comment">#!/bin/bash</span><br><span class="hljs-built_in">source</span>  /opt/raid0/boost/profile<br>logbak=/opt/raid0/boost/logbak<br>time=`<span class="hljs-built_in">date</span> +%Y%m%d%H%M%S`<br>[ -f /opt/raid0/boost/logs ] &amp;&amp; <span class="hljs-built_in">mkdir</span> -p <span class="hljs-variable">$logbak</span> &amp;&amp; <span class="hljs-built_in">mv</span> /opt/raid0/boost/logs <span class="hljs-variable">$logbak</span>/miner_<span class="hljs-variable">$&#123;time&#125;</span>.<span class="hljs-built_in">log</span><br><span class="hljs-built_in">nohup</span> boostd --vv run  &gt; /opt/raid0/boost/logs 2&gt;&amp;1 &amp;<br><br><span class="hljs-comment">#启动boost脚本</span><br>bash /opt/raid0/boost/start_boost.sh<br></code></pre></td></tr></table></figure>
 
 <h6 id="9-修改boost配置文件"><a href="#9-修改boost配置文件" class="headerlink" title="9,修改boost配置文件"></a>9,修改boost配置文件</h6><p>vim ~/.boost/config.toml</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[API]</span><br><span class="line">  ListenAddress = <span class="string">&quot;/ip4/127.0.0.1/tcp/1288/http&quot;</span></span><br><span class="line">  RemoteListenAddress = <span class="string">&quot;127.0.0.1:1288&quot;</span></span><br><span class="line">  Timeout = <span class="string">&quot;30s&quot;</span></span><br><span class="line">  </span><br><span class="line">[Libp2p]</span><br><span class="line">  ListenAddresses = [<span class="string">&quot;/ip4/39.109.85.24/tcp/12288&quot;</span>, <span class="string">&quot;/ip6/::/tcp/12288&quot;</span>]</span><br><span class="line">  AnnounceAddresses = [<span class="string">&quot;/ip4/39.109.85.24/tcp/12288&quot;</span>]</span><br><span class="line">  </span><br><span class="line">[Wallets]</span><br><span class="line">  Miner = <span class="string">&quot;f01943316&quot;</span></span><br><span class="line">  PublishStorageDeals = <span class="string">&quot;f3tgbpvqo3t53i47gmligo7gavizcjpxttontlbhvfifwkblwpzegdfci4daeqhwk7wmjcec6thoudntathzjq&quot;</span></span><br><span class="line">  DealCollateral = <span class="string">&quot;f3tgbpvqo3t53i47gmligo7gavizcjpxttontlbhvfifwkblwpzegdfci4daeqhwk7wmjcec6thoudntathzjq&quot;</span></span><br><span class="line">  PledgeCollateral = <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">[LotusFees]</span><br><span class="line">  MaxPublishDealsFee = <span class="string">&quot;0.5 FIL&quot;</span></span><br><span class="line">  MaxMarketBalanceAddFee = <span class="string">&quot;0.07 FIL&quot;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs bash">[API]<br>  ListenAddress = <span class="hljs-string">&quot;/ip4/127.0.0.1/tcp/1288/http&quot;</span><br>  RemoteListenAddress = <span class="hljs-string">&quot;127.0.0.1:1288&quot;</span><br>  Timeout = <span class="hljs-string">&quot;30s&quot;</span><br>  <br>[Libp2p]<br>  ListenAddresses = [<span class="hljs-string">&quot;/ip4/39.109.85.24/tcp/12288&quot;</span>, <span class="hljs-string">&quot;/ip6/::/tcp/12288&quot;</span>]<br>  AnnounceAddresses = [<span class="hljs-string">&quot;/ip4/39.109.85.24/tcp/12288&quot;</span>]<br>  <br>[Wallets]<br>  Miner = <span class="hljs-string">&quot;f01943316&quot;</span><br>  PublishStorageDeals = <span class="hljs-string">&quot;f3tgbpvqo3t53i47gmligo7gavizcjpxttontlbhvfifwkblwpzegdfci4daeqhwk7wmjcec6thoudntathzjq&quot;</span><br>  DealCollateral = <span class="hljs-string">&quot;f3tgbpvqo3t53i47gmligo7gavizcjpxttontlbhvfifwkblwpzegdfci4daeqhwk7wmjcec6thoudntathzjq&quot;</span><br>  PledgeCollateral = <span class="hljs-string">&quot;&quot;</span><br><br>[LotusFees]<br>  MaxPublishDealsFee = <span class="hljs-string">&quot;0.5 FIL&quot;</span><br>  MaxMarketBalanceAddFee = <span class="hljs-string">&quot;0.07 FIL&quot;</span><br></code></pre></td></tr></table></figure>
 
 <h6 id="10-修改调度miner的配置文件"><a href="#10-修改调度miner的配置文件" class="headerlink" title="10,修改调度miner的配置文件"></a>10,修改调度miner的配置文件</h6><p>vim /opt/raid0/lotusminer-sealing/lotusminer/config.toml</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#最底下面添加</span></span><br><span class="line">[Subsystems]</span><br><span class="line">  EnableMining = <span class="literal">true</span></span><br><span class="line">  EnableSealing = <span class="literal">true</span></span><br><span class="line">  EnableSectorStorage = <span class="literal">true</span></span><br><span class="line">  EnableMarkets = <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#最底下面添加</span><br>[Subsystems]<br>  EnableMining = <span class="hljs-literal">true</span><br>  EnableSealing = <span class="hljs-literal">true</span><br>  EnableSectorStorage = <span class="hljs-literal">true</span><br>  EnableMarkets = <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>
 
 <p>vim  /opt/raid0/lotusminer-sealing/profile</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#真实数据</span></span><br><span class="line"><span class="built_in">export</span> FIL_PROOFS_USE_MULTICORE_SDR=1</span><br><span class="line"><span class="built_in">export</span> LOTUS_MARKETS_PATH=/root/.boost</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#真实数据</span><br><span class="hljs-built_in">export</span> FIL_PROOFS_USE_MULTICORE_SDR=1<br><span class="hljs-built_in">export</span> LOTUS_MARKETS_PATH=/root/.boost<br></code></pre></td></tr></table></figure>
 
 <p>修改完后重启调度miner和boost</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pgrep lotus -a | grep lotusminer-sealing  |awk   <span class="string">&#x27;&#123;print &quot;kill -9 &quot;$1&#125;&#x27;</span> |bash</span><br><span class="line">pgrep boost -a |awk   <span class="string">&#x27;&#123;print &quot;kill -9 &quot;$1&#125;&#x27;</span> |bash</span><br><span class="line"></span><br><span class="line">bash /opt/raid0/lotusminer-sealing/start_lotusminer.sh</span><br><span class="line">bash /opt/raid0/boost/start_boost.sh</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">pgrep lotus -a | grep lotusminer-sealing  |awk   <span class="hljs-string">&#x27;&#123;print &quot;kill -9 &quot;$1&#125;&#x27;</span> |bash<br>pgrep boost -a |awk   <span class="hljs-string">&#x27;&#123;print &quot;kill -9 &quot;$1&#125;&#x27;</span> |bash<br><br>bash /opt/raid0/lotusminer-sealing/start_lotusminer.sh<br>bash /opt/raid0/boost/start_boost.sh<br></code></pre></td></tr></table></figure>
 
 <h6 id="11-调度miner发布p2p地址"><a href="#11-调度miner发布p2p地址" class="headerlink" title="11,调度miner发布p2p地址"></a>11,调度miner发布p2p地址</h6><p>lotus-miner actor set-addrs  “/ip4/39.109.85.24/tcp/12288”</p>
-<h6 id="12，随便找个miner询价测试"><a href="#12，随便找个miner询价测试" class="headerlink" title="12，随便找个miner询价测试"></a>12，随便找个miner询价测试</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#询价命令</span></span><br><span class="line">lotus client query-ask    f01943316</span><br><span class="line"><span class="comment">#询价卡住不返回结果是询价失败</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#查询节点的prees ID</span></span><br><span class="line">lotus state miner-info  f01943316</span><br><span class="line"><span class="comment">#查询miner的prees ID和boost的prees ID 对比</span></span><br><span class="line">lotus-miner  net <span class="built_in">id</span></span><br><span class="line">boostd  net <span class="built_in">id</span> </span><br><span class="line"><span class="comment">#以boostd的prees ID为准，在调度miner上更换bootsd的prees ID</span></span><br><span class="line">lotus-miner actor set-peer-id  12D3KooWBZL9NUDNUdBfMFpAQSxxMoGs57GAE3x7kuQiLkWVGbfA</span><br><span class="line"><span class="comment">#再次询价后可以了</span></span><br><span class="line">lotus client query-ask    f01943316</span><br><span class="line">Ask: f01943316</span><br><span class="line">Price per GiB: 0.0000000005 FIL</span><br><span class="line">Verified Price per GiB: 0.00000000005 FIL</span><br><span class="line">Max Piece size: 64 GiB</span><br><span class="line">Min Piece size: 256 B</span><br><span class="line"></span><br><span class="line"><span class="comment">#需要把Price和Verified的价格改为0，在调度miner上操作</span></span><br><span class="line">lotus-miner storage-deals  set-ask  --price 0.0000000   --verified-price 0.0000000  --min-piece-size 1GB    --max-piece-size 64GB</span><br><span class="line"></span><br><span class="line"><span class="comment">#再次询价</span></span><br><span class="line">lotus client query-ask  f01943316</span><br><span class="line">Ask: f01943316</span><br><span class="line">Price per GiB: 0 FIL</span><br><span class="line">Verified Price per GiB: 0 FIL</span><br><span class="line">Max Piece size: 64 GiB</span><br><span class="line">Min Piece size: 1 GiB</span><br></pre></td></tr></table></figure>
+<h6 id="12，随便找个miner询价测试"><a href="#12，随便找个miner询价测试" class="headerlink" title="12，随便找个miner询价测试"></a>12，随便找个miner询价测试</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#询价命令</span><br>lotus client query-ask    f01943316<br><span class="hljs-comment">#询价卡住不返回结果是询价失败</span><br><br><span class="hljs-comment">#查询节点的prees ID</span><br>lotus state miner-info  f01943316<br><span class="hljs-comment">#查询miner的prees ID和boost的prees ID 对比</span><br>lotus-miner  net <span class="hljs-built_in">id</span><br>boostd  net <span class="hljs-built_in">id</span> <br><span class="hljs-comment">#以boostd的prees ID为准，在调度miner上更换bootsd的prees ID</span><br>lotus-miner actor set-peer-id  12D3KooWBZL9NUDNUdBfMFpAQSxxMoGs57GAE3x7kuQiLkWVGbfA<br><span class="hljs-comment">#再次询价后可以了</span><br>lotus client query-ask    f01943316<br>Ask: f01943316<br>Price per GiB: 0.0000000005 FIL<br>Verified Price per GiB: 0.00000000005 FIL<br>Max Piece size: 64 GiB<br>Min Piece size: 256 B<br><br><span class="hljs-comment">#需要把Price和Verified的价格改为0，在调度miner上操作</span><br>lotus-miner storage-deals  set-ask  --price 0.0000000   --verified-price 0.0000000  --min-piece-size 1GB    --max-piece-size 64GB<br><br><span class="hljs-comment">#再次询价</span><br>lotus client query-ask  f01943316<br>Ask: f01943316<br>Price per GiB: 0 FIL<br>Verified Price per GiB: 0 FIL<br>Max Piece size: 64 GiB<br>Min Piece size: 1 GiB<br></code></pre></td></tr></table></figure>
 
-<h6 id="13-转币到market"><a href="#13-转币到market" class="headerlink" title="13,转币到market"></a>13,转币到market</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#lotus 使用worker钱包转币到market</span></span><br><span class="line"><span class="comment">#--from是指定哪个钱包地址</span></span><br><span class="line"><span class="comment">#--address是指定哪个miner的market</span></span><br><span class="line"><span class="comment">#后面跟着的数量表示为多少fil</span></span><br><span class="line">lotus wallet market  add --from  f3tgbpvqo3t53i47gmligo7gavizcjpxttontlbhvfifwkblwpzegdfci4daeqhwk7wmjcec6thoudntathzjq  --address f01943316  99</span><br></pre></td></tr></table></figure>
+<h6 id="13-转币到market"><a href="#13-转币到market" class="headerlink" title="13,转币到market"></a>13,转币到market</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#lotus 使用worker钱包转币到market</span><br><span class="hljs-comment">#--from是指定哪个钱包地址</span><br><span class="hljs-comment">#--address是指定哪个miner的market</span><br><span class="hljs-comment">#后面跟着的数量表示为多少fil</span><br>lotus wallet market  add --from  f3tgbpvqo3t53i47gmligo7gavizcjpxttontlbhvfifwkblwpzegdfci4daeqhwk7wmjcec6thoudntathzjq  --address f01943316  99<br></code></pre></td></tr></table></figure>
 
-<h6 id="14，boostd导入订单"><a href="#14，boostd导入订单" class="headerlink" title="14，boostd导入订单"></a>14，boostd导入订单</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#boost导入订单，根据客户端提供的信息导入DC订单</span></span><br><span class="line">boostd import-data   &lt;uuid&gt;    &lt;carfile的绝对路径&gt;</span><br></pre></td></tr></table></figure>
+<h6 id="14，boostd导入订单"><a href="#14，boostd导入订单" class="headerlink" title="14，boostd导入订单"></a>14，boostd导入订单</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#boost导入订单，根据客户端提供的信息导入DC订单</span><br>boostd import-data   &lt;uuid&gt;    &lt;carfile的绝对路径&gt;<br></code></pre></td></tr></table></figure>
 
-<h2 id="DC发单"><a href="#DC发单" class="headerlink" title="DC发单"></a>DC发单</h2><h4 id="部署boost发单程序"><a href="#部署boost发单程序" class="headerlink" title="部署boost发单程序"></a>部署boost发单程序</h4><h6 id="1，部署go程序-1"><a href="#1，部署go程序-1" class="headerlink" title="1，部署go程序"></a>1，部署go程序</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget -c https://golang.org/dl/go1.18.1.linux-amd64.tar.gz -O - | sudo tar -xz -C /usr/local</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;export PATH=<span class="variable">$PATH</span>:/usr/local/go/bin&quot;</span> &gt;&gt; ~/.bashrc &amp;&amp; <span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+<h2 id="DC发单"><a href="#DC发单" class="headerlink" title="DC发单"></a>DC发单</h2><h4 id="部署boost发单程序"><a href="#部署boost发单程序" class="headerlink" title="部署boost发单程序"></a>部署boost发单程序</h4><h6 id="1，部署go程序-1"><a href="#1，部署go程序-1" class="headerlink" title="1，部署go程序"></a>1，部署go程序</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">wget -c https://golang.org/dl/go1.18.1.linux-amd64.tar.gz -O - | sudo tar -xz -C /usr/local<br><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;export PATH=<span class="hljs-variable">$PATH</span>:/usr/local/go/bin&quot;</span> &gt;&gt; ~/.bashrc &amp;&amp; <span class="hljs-built_in">source</span> ~/.bashrc<br></code></pre></td></tr></table></figure>
 
-<h6 id="2，部署rsut程序-1"><a href="#2，部署rsut程序-1" class="headerlink" title="2，部署rsut程序"></a>2，部署rsut程序</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl --proto <span class="string">&#x27;=https&#x27;</span> --tlsv1.2 -sSf https://sh.rustup.rs | sh   </span><br><span class="line">屏幕输出    填1</span><br><span class="line"><span class="built_in">source</span> <span class="string">&quot;<span class="variable">$HOME</span>/.cargo/env&quot;</span></span><br></pre></td></tr></table></figure>
+<h6 id="2，部署rsut程序-1"><a href="#2，部署rsut程序-1" class="headerlink" title="2，部署rsut程序"></a>2，部署rsut程序</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">curl --proto <span class="hljs-string">&#x27;=https&#x27;</span> --tlsv1.2 -sSf https://sh.rustup.rs | sh   <br>屏幕输出    填1<br><span class="hljs-built_in">source</span> <span class="hljs-string">&quot;<span class="hljs-variable">$HOME</span>/.cargo/env&quot;</span><br></code></pre></td></tr></table></figure>
 
-<h6 id="3，安装依赖-1"><a href="#3，安装依赖-1" class="headerlink" title="3，安装依赖"></a>3，安装依赖</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -</span><br><span class="line">sudo apt-get install -y nodejs</span><br><span class="line">sudo apt install mesa-opencl-icd ocl-icd-opencl-dev gcc git bzr jq pkg-config curl clang build-essential hwloc libhwloc-dev wget -y</span><br><span class="line"><span class="comment">#git拉代码失败的话，需要删除/opt/raid/boost/boost后多安装几次依赖</span></span><br></pre></td></tr></table></figure>
+<h6 id="3，安装依赖-1"><a href="#3，安装依赖-1" class="headerlink" title="3，安装依赖"></a>3，安装依赖</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -<br>sudo apt-get install -y nodejs<br>sudo apt install mesa-opencl-icd ocl-icd-opencl-dev gcc git bzr jq pkg-config curl clang build-essential hwloc libhwloc-dev wget -y<br><span class="hljs-comment">#git拉代码失败的话，需要删除/opt/raid/boost/boost后多安装几次依赖</span><br></code></pre></td></tr></table></figure>
 
-<h6 id="4，刷环境变量-1"><a href="#4，刷环境变量-1" class="headerlink" title="4，刷环境变量"></a>4，刷环境变量</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> RUSTFLAGS=<span class="string">&quot;-C target-cpu=native -g&quot;</span></span><br><span class="line"><span class="built_in">export</span> FFI_BUILD_FROM_SOURCE=1</span><br></pre></td></tr></table></figure>
+<h6 id="4，刷环境变量-1"><a href="#4，刷环境变量-1" class="headerlink" title="4，刷环境变量"></a>4，刷环境变量</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> RUSTFLAGS=<span class="hljs-string">&quot;-C target-cpu=native -g&quot;</span><br><span class="hljs-built_in">export</span> FFI_BUILD_FROM_SOURCE=1<br></code></pre></td></tr></table></figure>
 
-<h6 id="5，拉代码-1"><a href="#5，拉代码-1" class="headerlink" title="5，拉代码"></a>5，拉代码</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> /opt/raid0/boost</span><br><span class="line"><span class="built_in">cd</span> /opt/raid0/boost</span><br><span class="line"></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/filecoin-project/boost</span><br><span class="line"><span class="built_in">cd</span> boost</span><br><span class="line">make build</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+<h6 id="5，拉代码-1"><a href="#5，拉代码-1" class="headerlink" title="5，拉代码"></a>5，拉代码</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> /opt/raid0/boost<br><span class="hljs-built_in">cd</span> /opt/raid0/boost<br><br>git <span class="hljs-built_in">clone</span> https://github.com/filecoin-project/boost<br><span class="hljs-built_in">cd</span> boost<br>make build<br>sudo make install<br></code></pre></td></tr></table></figure>
 
-<h6 id="6，初始化boost"><a href="#6，初始化boost" class="headerlink" title="6，初始化boost"></a>6，初始化boost</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#获取lotus的api</span></span><br><span class="line">lotus auth api-info --perm admin </span><br><span class="line"></span><br><span class="line"><span class="comment">#初始化boost</span></span><br><span class="line">boost -vv init</span><br></pre></td></tr></table></figure>
+<h6 id="6，初始化boost"><a href="#6，初始化boost" class="headerlink" title="6，初始化boost"></a>6，初始化boost</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#获取lotus的api</span><br>lotus auth api-info --perm admin <br><br><span class="hljs-comment">#初始化boost</span><br>boost -vv init<br></code></pre></td></tr></table></figure>
 
-<h6 id="7，boost发单"><a href="#7，boost发单" class="headerlink" title="7，boost发单"></a>7，boost发单</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#先向miner询价，价格为0就可以发单</span></span><br><span class="line">lotus client query-ask  &lt;miner_id&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">#boost发单命令</span></span><br><span class="line">boost offline-deal  --verified=<span class="literal">true</span>  --provider=f01****     --duration=1526400  --commp=baga6ea4seaqa23hr*****   --car-size=23890224298  --start-epoch=2317000   --piece-size=34359738368  --payload-cid=0    --payload-cid=bafybeideta5t****</span><br><span class="line"></span><br><span class="line"><span class="comment">#offline-deal       #表示订单为离线订单</span></span><br><span class="line"><span class="comment">#--verified         #表示订单已验证  </span></span><br><span class="line"><span class="comment">#--provider         #存储提供商节点号 </span></span><br><span class="line"><span class="comment">#--duration         #订单封装成扇区后的生命周期</span></span><br><span class="line"><span class="comment">#--commp            #切car生成的piece_cid</span></span><br><span class="line"><span class="comment">#--car-size         #carfile文件的大小，需要字节用量 </span></span><br><span class="line"><span class="comment">#--start-epoch      #订单到期高度，不能超过7天（也就是说一个订单发出去后，7天内不封装完就会过期）</span></span><br><span class="line"><span class="comment">#--piece-size       #发出去订单的大小（精确到字节，32G=34359738368）</span></span><br><span class="line"><span class="comment">#--storage-price    #存储的价格（值必须为0）</span></span><br><span class="line"><span class="comment">#--payload-cid      #切car生成的deal_cid</span></span><br></pre></td></tr></table></figure>
+<h6 id="7，boost发单"><a href="#7，boost发单" class="headerlink" title="7，boost发单"></a>7，boost发单</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#先向miner询价，价格为0就可以发单</span><br>lotus client query-ask  &lt;miner_id&gt;<br><br><span class="hljs-comment">#boost发单命令</span><br>boost offline-deal  --verified=<span class="hljs-literal">true</span>  --provider=f01****     --duration=1526400  --commp=baga6ea4seaqa23hr*****   --car-size=23890224298  --start-epoch=2317000   --piece-size=34359738368  --payload-cid=0    --payload-cid=bafybeideta5t****<br><br><span class="hljs-comment">#offline-deal       #表示订单为离线订单</span><br><span class="hljs-comment">#--verified         #表示订单已验证  </span><br><span class="hljs-comment">#--provider         #存储提供商节点号 </span><br><span class="hljs-comment">#--duration         #订单封装成扇区后的生命周期</span><br><span class="hljs-comment">#--commp            #切car生成的piece_cid</span><br><span class="hljs-comment">#--car-size         #carfile文件的大小，需要字节用量 </span><br><span class="hljs-comment">#--start-epoch      #订单到期高度，不能超过7天（也就是说一个订单发出去后，7天内不封装完就会过期）</span><br><span class="hljs-comment">#--piece-size       #发出去订单的大小（精确到字节，32G=34359738368）</span><br><span class="hljs-comment">#--storage-price    #存储的价格（值必须为0）</span><br><span class="hljs-comment">#--payload-cid      #切car生成的deal_cid</span><br></code></pre></td></tr></table></figure>
 
-<h2 id="singularity（奇点）"><a href="#singularity（奇点）" class="headerlink" title="singularity（奇点）"></a>singularity（奇点）</h2><h4 id="切car工具"><a href="#切car工具" class="headerlink" title="切car工具"></a>切car工具</h4><h6 id="1，拉代码，构建程序"><a href="#1，拉代码，构建程序" class="headerlink" title="1，拉代码，构建程序"></a>1，拉代码，构建程序</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#安装环境</span></span><br><span class="line"><span class="comment"># Install nvm (https://github.com/nvm-sh/nvm#install--update-script)</span></span><br><span class="line">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash</span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br><span class="line">nvm install 16</span><br><span class="line"></span><br><span class="line"><span class="comment">#拉代码，构建程序</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/tech-greedy/singularity.git</span><br><span class="line"><span class="built_in">cd</span> singularity</span><br><span class="line">npm ci</span><br><span class="line">npm run build</span><br><span class="line">npm <span class="built_in">link</span></span><br><span class="line">singularity -h</span><br><span class="line"></span><br><span class="line"><span class="comment">#有可能需要依赖</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/tech-greedy/go-generate-car.git</span><br><span class="line"><span class="built_in">cd</span> go-generate-car</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+<h2 id="singularity（奇点）"><a href="#singularity（奇点）" class="headerlink" title="singularity（奇点）"></a>singularity（奇点）</h2><h4 id="切car工具"><a href="#切car工具" class="headerlink" title="切car工具"></a>切car工具</h4><h6 id="1，拉代码，构建程序"><a href="#1，拉代码，构建程序" class="headerlink" title="1，拉代码，构建程序"></a>1，拉代码，构建程序</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#安装环境</span><br><span class="hljs-comment"># Install nvm (https://github.com/nvm-sh/nvm#install--update-script)</span><br>curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash<br><span class="hljs-built_in">source</span> ~/.bashrc<br>nvm install 16<br><br><span class="hljs-comment">#拉代码，构建程序</span><br>git <span class="hljs-built_in">clone</span> https://github.com/tech-greedy/singularity.git<br><span class="hljs-built_in">cd</span> singularity<br>npm ci<br>npm run build<br>npm <span class="hljs-built_in">link</span><br>singularity -h<br><br><span class="hljs-comment">#有可能需要依赖</span><br>git <span class="hljs-built_in">clone</span> https://github.com/tech-greedy/go-generate-car.git<br><span class="hljs-built_in">cd</span> go-generate-car<br>make<br></code></pre></td></tr></table></figure>
 
-<h6 id="2，初始化singularity"><a href="#2，初始化singularity" class="headerlink" title="2，初始化singularity"></a>2，初始化singularity</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#初始化</span></span><br><span class="line">singularity init</span><br><span class="line"></span><br><span class="line"><span class="comment">#启动singularity守护进程（后台运行）</span></span><br><span class="line">tmux  </span><br><span class="line"><span class="built_in">export</span> SINGULARITY_PATH=/the/path/to/the/repo</span><br><span class="line">singularity  daemon</span><br><span class="line"></span><br><span class="line"><span class="comment">#配置文件在/the/path/to/the/repo目录下，使用外部mongodb可以在里面配置，切car任务数量和切car大小比例也在配置文件里面，singularity也是一个发单工具，发单工具不好用，发单还是得boost工具</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#singularity 配置文件</span></span><br><span class="line">vim  /the/path/to/the/repo/default.toml</span><br><span class="line"></span><br><span class="line">[deal_preparation_service]   </span><br><span class="line">minDealSizeRatio = 0.55        <span class="comment">#car最小比例</span></span><br><span class="line">maxDealSizeRatio = 0.95        <span class="comment">#car最大比例 </span></span><br><span class="line"></span><br><span class="line">[deal_preparation_worker]</span><br><span class="line">num_workers = 30               <span class="comment">#car线程，默认是4个线程（一个线程消耗1个cpu核心）</span></span><br></pre></td></tr></table></figure>
+<h6 id="2，初始化singularity"><a href="#2，初始化singularity" class="headerlink" title="2，初始化singularity"></a>2，初始化singularity</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#初始化</span><br>singularity init<br><br><span class="hljs-comment">#启动singularity守护进程（后台运行）</span><br>tmux  <br><span class="hljs-built_in">export</span> SINGULARITY_PATH=/the/path/to/the/repo<br>singularity  daemon<br><br><span class="hljs-comment">#配置文件在/the/path/to/the/repo目录下，使用外部mongodb可以在里面配置，切car任务数量和切car大小比例也在配置文件里面，singularity也是一个发单工具，发单工具不好用，发单还是得boost工具</span><br><br><span class="hljs-comment">#singularity 配置文件</span><br>vim  /the/path/to/the/repo/default.toml<br><br>[deal_preparation_service]   <br>minDealSizeRatio = 0.55        <span class="hljs-comment">#car最小比例</span><br>maxDealSizeRatio = 0.95        <span class="hljs-comment">#car最大比例 </span><br><br>[deal_preparation_worker]<br>num_workers = 30               <span class="hljs-comment">#car线程，默认是4个线程（一个线程消耗1个cpu核心）</span><br></code></pre></td></tr></table></figure>
 
-<h6 id="3，singularity命令的使用"><a href="#3，singularity命令的使用" class="headerlink" title="3，singularity命令的使用"></a>3，singularity命令的使用</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#singularity切car是以数据目录为单位去切，建议一个数据目录不要超过20T(简称为数据集)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#切car命令，（时间比较长，建议放tmux）</span></span><br><span class="line">singularity   prep  create  &lt;数据集名字&gt;   &lt;数据集源路径&gt;  &lt;切好后数据集存放路径&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看数据集</span></span><br><span class="line">singularity prep   list</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看car数据</span></span><br><span class="line">singularity prep   status   &lt;数据集名字&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">#删除数据集（加上--purge，删除数据集和数据）</span></span><br><span class="line">singularity prep remove  &lt;数据集名字&gt;</span><br></pre></td></tr></table></figure>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://example.com">阿Q</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2022/12/29/DC/">http://example.com/2022/12/29/DC/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2022/12/29/%E5%A4%84%E7%90%86/"><img class="prev-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">处理</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">阿Q</div><div class="author-info__description">世界那么大，我想去看看</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">爱榕宝，爱技术，记录自己的生活，充实自己！！！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#DC"><span class="toc-number">1.</span> <span class="toc-text">DC</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#DC%E5%B0%81%E8%A3%85"><span class="toc-number">1.1.</span> <span class="toc-text">DC封装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2boost%E6%8E%A5%E5%8D%95%E7%A8%8B%E5%BA%8F%EF%BC%8C%E5%9C%A8miner%E6%9C%BA%E5%99%A8%E4%B8%8A%E9%83%A8%E7%BD%B2"><span class="toc-number">1.1.0.1.</span> <span class="toc-text">部署boost接单程序，在miner机器上部署</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%EF%BC%8C%E9%83%A8%E7%BD%B2go%E7%A8%8B%E5%BA%8F"><span class="toc-number">1.1.0.1.0.1.</span> <span class="toc-text">1，部署go程序</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2%EF%BC%8C%E9%83%A8%E7%BD%B2rsut%E7%A8%8B%E5%BA%8F"><span class="toc-number">1.1.0.1.0.2.</span> <span class="toc-text">2，部署rsut程序</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3%EF%BC%8C%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96"><span class="toc-number">1.1.0.1.0.3.</span> <span class="toc-text">3，安装依赖</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4%EF%BC%8C%E5%88%B7%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">1.1.0.1.0.4.</span> <span class="toc-text">4，刷环境变量</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#5%EF%BC%8C%E6%8B%89%E4%BB%A3%E7%A0%81"><span class="toc-number">1.1.0.1.0.5.</span> <span class="toc-text">5，拉代码</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#6-%E8%8E%B7%E5%8F%964%E4%B8%AA%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">1.1.0.1.0.6.</span> <span class="toc-text">6,获取4个环境变量</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#7%EF%BC%8C%E5%88%9D%E5%A7%8B%E5%8C%96boostd"><span class="toc-number">1.1.0.1.0.7.</span> <span class="toc-text">7，初始化boostd</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#8%EF%BC%8C%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC"><span class="toc-number">1.1.0.1.0.8.</span> <span class="toc-text">8，启动脚本</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#9-%E4%BF%AE%E6%94%B9boost%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">1.1.0.1.0.9.</span> <span class="toc-text">9,修改boost配置文件</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#10-%E4%BF%AE%E6%94%B9%E8%B0%83%E5%BA%A6miner%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">1.1.0.1.0.10.</span> <span class="toc-text">10,修改调度miner的配置文件</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#11-%E8%B0%83%E5%BA%A6miner%E5%8F%91%E5%B8%83p2p%E5%9C%B0%E5%9D%80"><span class="toc-number">1.1.0.1.0.11.</span> <span class="toc-text">11,调度miner发布p2p地址</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#12%EF%BC%8C%E9%9A%8F%E4%BE%BF%E6%89%BE%E4%B8%AAminer%E8%AF%A2%E4%BB%B7%E6%B5%8B%E8%AF%95"><span class="toc-number">1.1.0.1.0.12.</span> <span class="toc-text">12，随便找个miner询价测试</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#13-%E8%BD%AC%E5%B8%81%E5%88%B0market"><span class="toc-number">1.1.0.1.0.13.</span> <span class="toc-text">13,转币到market</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#14%EF%BC%8Cboostd%E5%AF%BC%E5%85%A5%E8%AE%A2%E5%8D%95"><span class="toc-number">1.1.0.1.0.14.</span> <span class="toc-text">14，boostd导入订单</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DC%E5%8F%91%E5%8D%95"><span class="toc-number">1.2.</span> <span class="toc-text">DC发单</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2boost%E5%8F%91%E5%8D%95%E7%A8%8B%E5%BA%8F"><span class="toc-number">1.2.0.1.</span> <span class="toc-text">部署boost发单程序</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%EF%BC%8C%E9%83%A8%E7%BD%B2go%E7%A8%8B%E5%BA%8F-1"><span class="toc-number">1.2.0.1.0.1.</span> <span class="toc-text">1，部署go程序</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2%EF%BC%8C%E9%83%A8%E7%BD%B2rsut%E7%A8%8B%E5%BA%8F-1"><span class="toc-number">1.2.0.1.0.2.</span> <span class="toc-text">2，部署rsut程序</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3%EF%BC%8C%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96-1"><span class="toc-number">1.2.0.1.0.3.</span> <span class="toc-text">3，安装依赖</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4%EF%BC%8C%E5%88%B7%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F-1"><span class="toc-number">1.2.0.1.0.4.</span> <span class="toc-text">4，刷环境变量</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#5%EF%BC%8C%E6%8B%89%E4%BB%A3%E7%A0%81-1"><span class="toc-number">1.2.0.1.0.5.</span> <span class="toc-text">5，拉代码</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#6%EF%BC%8C%E5%88%9D%E5%A7%8B%E5%8C%96boost"><span class="toc-number">1.2.0.1.0.6.</span> <span class="toc-text">6，初始化boost</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#7%EF%BC%8Cboost%E5%8F%91%E5%8D%95"><span class="toc-number">1.2.0.1.0.7.</span> <span class="toc-text">7，boost发单</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#singularity%EF%BC%88%E5%A5%87%E7%82%B9%EF%BC%89"><span class="toc-number">1.3.</span> <span class="toc-text">singularity（奇点）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%87car%E5%B7%A5%E5%85%B7"><span class="toc-number">1.3.0.1.</span> <span class="toc-text">切car工具</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1%EF%BC%8C%E6%8B%89%E4%BB%A3%E7%A0%81%EF%BC%8C%E6%9E%84%E5%BB%BA%E7%A8%8B%E5%BA%8F"><span class="toc-number">1.3.0.1.0.1.</span> <span class="toc-text">1，拉代码，构建程序</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2%EF%BC%8C%E5%88%9D%E5%A7%8B%E5%8C%96singularity"><span class="toc-number">1.3.0.1.0.2.</span> <span class="toc-text">2，初始化singularity</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3%EF%BC%8Csingularity%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">1.3.0.1.0.3.</span> <span class="toc-text">3，singularity命令的使用</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/12/29/%E9%92%B1%E5%8C%85/" title="No title"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="No title"/></a><div class="content"><a class="title" href="/2022/12/29/%E9%92%B1%E5%8C%85/" title="No title">No title</a><time datetime="2022-12-29T10:03:10.044Z" title="Created 2022-12-29 18:03:10">2022-12-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/12/29/%E8%84%9A%E6%9C%AC%EF%80%AA/" title="No title"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="No title"/></a><div class="content"><a class="title" href="/2022/12/29/%E8%84%9A%E6%9C%AC%EF%80%AA/" title="No title">No title</a><time datetime="2022-12-29T10:03:09.998Z" title="Created 2022-12-29 18:03:09">2022-12-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/12/29/%E7%AE%97%E5%8A%9B%E6%9C%BA%E9%83%A8%E7%BD%B2/" title="No title"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="No title"/></a><div class="content"><a class="title" href="/2022/12/29/%E7%AE%97%E5%8A%9B%E6%9C%BA%E9%83%A8%E7%BD%B2/" title="No title">No title</a><time datetime="2022-12-29T10:03:09.955Z" title="Created 2022-12-29 18:03:09">2022-12-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/12/29/%E7%AC%94%E8%AE%B0/" title="No title"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="No title"/></a><div class="content"><a class="title" href="/2022/12/29/%E7%AC%94%E8%AE%B0/" title="No title">No title</a><time datetime="2022-12-29T10:03:09.912Z" title="Created 2022-12-29 18:03:09">2022-12-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/12/29/%E6%8F%90%E5%B8%81%E8%BD%AC%E5%B8%81/" title="No title"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="No title"/></a><div class="content"><a class="title" href="/2022/12/29/%E6%8F%90%E5%B8%81%E8%BD%AC%E5%B8%81/" title="No title">No title</a><time datetime="2022-12-29T10:03:09.869Z" title="Created 2022-12-29 18:03:09">2022-12-29</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 阿Q</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+<h6 id="3，singularity命令的使用"><a href="#3，singularity命令的使用" class="headerlink" title="3，singularity命令的使用"></a>3，singularity命令的使用</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#singularity切car是以数据目录为单位去切，建议一个数据目录不要超过20T(简称为数据集)</span><br><br><span class="hljs-comment">#切car命令，（时间比较长，建议放tmux）</span><br>singularity   prep  create  &lt;数据集名字&gt;   &lt;数据集源路径&gt;  &lt;切好后数据集存放路径&gt;<br><br><span class="hljs-comment">#查看数据集</span><br>singularity prep   list<br><br><span class="hljs-comment">#查看car数据</span><br>singularity prep   status   &lt;数据集名字&gt;<br><br><span class="hljs-comment">#删除数据集（加上--purge，删除数据集和数据）</span><br>singularity prep remove  &lt;数据集名字&gt;<br></code></pre></td></tr></table></figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>DC</div>
+      <div>http://example.com/2022/12/29/DC/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>阿Q</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>December 29, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/12/29/%E5%A4%84%E7%90%86/" title="处理">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">处理</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
