@@ -77,26 +77,6 @@
   </entry>
   
   <entry>
-    <title></title>
-    <link href="http://example.com/2022/12/29/%E8%84%9A%E6%9C%AC%EF%80%AA/"/>
-    <id>http://example.com/2022/12/29/%E8%84%9A%E6%9C%AC%EF%80%AA/</id>
-    <published>2022-12-29T10:03:09.998Z</published>
-    <updated>2022-12-30T01:44:23.134Z</updated>
-    
-    <content type="html"><![CDATA[<p>#!/bin/bash<br>for sealed in <code>ls /export/sealed/</code><br>   do<br>       cache=<code>echo $sealed|sed &#39;s/sealed/cache/&#39;</code><br>       {<br>              rsync -au /export/sealed/$sealed /mnt/10.3.14.17/export/sealed/<br>              rsync -au /export/cache/$cache  /mnt/10.3.14.17/export/cache/<br>         } &amp;<br>         while [ <code>pgrep -c rsync</code> -gt 5 ]<br>         do<br>           sleep 10<br>         done<br>done</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;#!/bin/bash&lt;br&gt;for sealed in &lt;code&gt;ls /export/sealed/&lt;/code&gt;&lt;br&gt;   do&lt;br&gt;       cache=&lt;code&gt;echo $sealed|sed &amp;#39;s/sealed/cache/&amp;#39;&lt;/c</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
     <title>算力机部署</title>
     <link href="http://example.com/2022/12/29/%E7%AE%97%E5%8A%9B%E6%9C%BA%E9%83%A8%E7%BD%B2/"/>
     <id>http://example.com/2022/12/29/%E7%AE%97%E5%8A%9B%E6%9C%BA%E9%83%A8%E7%BD%B2/</id>
