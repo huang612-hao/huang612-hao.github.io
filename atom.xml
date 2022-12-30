@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-12-30T06:22:08.833Z</updated>
+  <updated>2022-12-30T02:09:01.669Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,26 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>aleo</title>
-    <link href="http://example.com/2022/12/30/aleo/"/>
-    <id>http://example.com/2022/12/30/aleo/</id>
-    <published>2022-12-30T02:17:04.960Z</published>
-    <updated>2022-12-30T06:22:08.833Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="aleo"><a href="#aleo" class="headerlink" title="aleo"></a>aleo</h2><p>root@f01943776-p1-10-0-101-47:/opt/aleo# ./damominer –new-account </p><p>Private key: APrivateKey1zkp6ttaHRWQNX6bjDFkp33VUmkQYWX2wiX1C3SjpBJaP7zb<br>   View key: AViewKey1i9QeBGo5dgqeGaoJ3w9FvCgqYgKFGNL1RtWPyCbkqThU<br>    Address: aleo1qcypmym8h5q9gmhapv8daa6kddzh3dvwn3chpdv4tmy8marejgqsqvm0tc</p><p>root@f01943776-p1-10-0-101-47:/opt/aleo# </p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;aleo&quot;&gt;&lt;a href=&quot;#aleo&quot; class=&quot;headerlink&quot; title=&quot;aleo&quot;&gt;&lt;/a&gt;aleo&lt;/h2&gt;&lt;p&gt;root@f01943776-p1-10-0-101-47:/opt/aleo# ./damominer –new-acco</summary>
-      
-    
-    
-    
-    
-  </entry>
   
   <entry>
     <title>脚本</title>
